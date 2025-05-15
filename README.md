@@ -12,7 +12,7 @@ Lista de tarefas desenvolvida para a matéria de engenharia de software II com o
   - [Github](https://github.com/ti-ago/)
   - [Likedin](https://www.linkedin.com/in/tiago-miranda-8402b8233/)
 - Leonardo, Design:
-  - [Github](
+  - [Github]()
   - [Likedin](https://www.linkedin.com/in/leonardo-marcondes-a2658a206/)
 - Caio, Design:
   - [Github]()
