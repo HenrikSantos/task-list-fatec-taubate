@@ -1,6 +1,6 @@
 function ChecklistGroup () {
     return <>
-    <p>teste</p>
+    <p>ChecklistGroup Component</p>
     </>
 }
 
