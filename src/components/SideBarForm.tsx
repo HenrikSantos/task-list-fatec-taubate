@@ -1,13 +1,26 @@
+import React, { useState } from "react";
+
 function SidebarForm (){
+    const[inputValue, setInputValue] = useState("");
+    const[tarefas, setTarefass] = useState<string[]>([]);
+
+    function addLine(){
+        if (inputValue.trim() !== ""){
+            setTarefass([...tarefas, inputValue]);
+            setInputValue("");
+        }
+    }
+    
+
     return <>
     <div>
         <p>Minha Lista de Tarefas</p>
-        <img src="/public/Logo.png" alt="logo" />
+        <img src="/Logo.png" alt="logo" />
     </div>
     
     <div>
-        <p>Nome</p>
-        <input type="text" />
+        <p>Nome </p>
+        <input type="text" onChange={evento => setInputValue(evento.target.value)}/>
     </div>
     
     <div>
@@ -16,11 +29,12 @@ function SidebarForm (){
     </div>
 
     <div>
-        <input type="checkbox" />
-        Checklist
+        {tarefas.map((tarefa, index) => (
+                <p key={index}>{tarefa}</p>
+            ))}
     </div>
     
-    <button>Adicionar</button>
+    <button onClick={addLine}>Adicionar </button>
     <button>Salvar</button>
     </>
 }

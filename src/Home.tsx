@@ -1,4 +1,4 @@
-import './App.css'
+import './Home.css'
 import ChecklistGroup from './components/ChecklistGroup'
 import SideBarForm from './components/SideBarForm'
 
