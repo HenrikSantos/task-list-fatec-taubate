@@ -1,4 +1,4 @@
-import { Task } from './task-interface';
+import type { Task } from './task-interface';
 
 export interface Checklist {
     id: number;
