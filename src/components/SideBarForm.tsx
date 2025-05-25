@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function SidebarForm (){
+
+function SidebarForm (props: {onSalvarTarefas: (tarefas: string[]) => void}) {
     const[inputValue, setInputValue] = useState("");
     const[tarefas, setTarefass] = useState<string[]>([]);
 
