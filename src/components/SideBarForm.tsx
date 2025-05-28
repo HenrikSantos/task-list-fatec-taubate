@@ -3,67 +3,84 @@ import type { Checklist } from "../interfaces/checklist-interface";
 import type { Task } from "../interfaces/task-interface";
 
 
-function SidebarForm (props: {onSalvarTarefas: (Checklist: Checklist) => void}) {
-    const [nome, setNome] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [tarefas, setTarefas] = useState<Task[]>([]);
+function SidebarForm({ onSalvarTarefas,  }: { onSalvarTarefas: (Checklist: Checklist) => void }) {
+    const [checklist, setChecklist] = useState<Checklist>({
+        id: 0,
+        name: "",
+        description: "",
+        tasks: [],
+    });
+
     const [inputNomeTarefa, setInputNomeTarefa] = useState("");
 
-    function addLine(){
+    function addLine() {
         if (inputNomeTarefa.trim() !== "") {
-            setTarefas([...tarefas, { id: Date.now(), name: inputNomeTarefa, completed: false }]);
+            setChecklist({
+                ...checklist,
+                tasks: [...checklist.tasks, { id: Date.now(), name: inputNomeTarefa, completed: false }]
+            });
             setInputNomeTarefa("");
         }
     }
 
     function salvarChecklist() {
         const novoChecklist: Checklist = {
+            ...checklist,
             id: Date.now(),
-            name: nome,
-            description: descricao,
-            tasks: tarefas
         };
-        props.onSalvarTarefas(novoChecklist);
-        setNome("");
-        setDescricao("");
-        setTarefas([]);
+        onSalvarTarefas(novoChecklist);
+        setChecklist({
+        id: 0,
+        name: "",
+        description: "",
+        tasks: [],
+        })
     }
-    
+
+    function removeTask(id: number){
+        setChecklist({...checklist, tasks : checklist.tasks.filter((task) => task.id !== id)})
+    }
+
+const {name, description, tasks} = checklist;
 
     return <>
-    <div>
-        <p>Minha Lista de Tarefas</p>
-        <img src="/Logo.png" alt="logo" />
-    </div>
-    
-    <div>
-        <p>Nome </p>
-        <input type="text" value={nome } onChange={e => setNome(e.target.value)}/>
-    </div>
-    
-    <div>
-        <p>Descrição</p>
-        <input type="text" value={descricao} onChange={e => setDescricao(e.target.value)} />
-    </div>
+        <div>
+            <p>Minha Lista de Tarefas</p>
+            <img src="/Logo.png" alt="logo" />
+        </div>
 
-    <div>
-                <p>Adicionar Tarefa</p>
-                <input
-                    type="text"
-                    value={inputNomeTarefa}
-                    onChange={e => setInputNomeTarefa(e.target.value)}
-                    onKeyDown={e => { if (e.key === "Enter") addLine(); }}
-                />
+        <div>
+            <p>Nome </p>
+            <input type="text" value={name} onChange={e => setChecklist({...checklist, name:e.target.value})} />
+        </div>
+
+        <div>
+            <p>Descrição</p>
+            <input type="text" value={description} onChange={e => setChecklist({...checklist, description:e.target.value})} />
+        </div>
+
+        <div>
+            <p>Adicionar Tarefa</p>
+            <input
+                type="text"
+                value={inputNomeTarefa}
+                onChange={e => setInputNomeTarefa(e.target.value)}
+                onKeyDown={e => { if (e.key === "Enter") addLine(); }}
+            />
+
+        </div>
+
+        <div>
+            {tasks.map((tarefa) => (
+                <>
+                    <button onClick={() => removeTask(tarefa.id)}>X</button> 
+                    <p key={tarefa.id}>{tarefa.name}</p>
+                </>
                 
-            </div>
-
-    <div>
-        {tarefas.map((tarefa, index) => (
-                <p key={tarefa.id}>{tarefa.name}</p>
             ))}
-    </div>
-    <button onClick={addLine}>Adicionar</button>
-    <button onClick={salvarChecklist}>Salvar</button>
+        </div>
+        <button onClick={addLine}>Adicionar</button>
+        <button onClick={salvarChecklist}>Salvar</button>
     </>
 }
 

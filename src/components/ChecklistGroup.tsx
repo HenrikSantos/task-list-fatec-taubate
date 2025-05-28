@@ -10,7 +10,10 @@ function ChecklistGroup(props: { checklists: Checklist[] }) {
                     <p>{checklist.description}</p>
                     <ul>
                         {checklist.tasks.map((task) => (
-                            <li key={task.id}>{task.name}</li>
+                            <div>
+                                <li key={task.id}>{task.name}</li>
+                            </div>
+                            
                         ))}
                     </ul>
                 </div>
