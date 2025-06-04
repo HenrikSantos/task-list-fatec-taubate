@@ -1,54 +1,44 @@
-# React + TypeScript + Vite
+# 📝 Projeto Lista de Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido para a disciplina **Engenharia de Software II**, com o objetivo de aplicar conceitos de engenharia de software no desenvolvimento de uma aplicação web interativa e funcional.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Vite](https://vitejs.dev/) – Build tool ultrarrápida
+- [TypeScript](https://www.typescriptlang.org/) – Superset de JavaScript tipado
+- [Tailwind CSS](https://tailwindcss.com/) – Framework de estilos utilitários
+- [Lucide Icons](https://lucide.dev/) – Ícones em SVG para interfaces modernas
+- [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) – Armazenamento local no navegador
 
-## Expanding the ESLint configuration
+## 🎯 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ✅ Adicionar tarefa com **nome** e **descrição**
+- 📋 Visualizar a **lista de tarefas**
+- ✔️ Marcar itens de **checklist** individualmente
+- 📈 Visualizar o **progresso** com base nas tarefas concluídas
+- 📝 **Editar** tarefas existentes
+- ❌ **Excluir** tarefas
+- 📤 **Exportar** tarefas em formato `.json`
+- 📥 **Importar** tarefas a partir de um arquivo `.json`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 💾 Armazenamento
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Todos os dados são salvos localmente no navegador usando `localStorage`, o que garante que suas tarefas sejam mantidas entre sessões sem necessidade de backend.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Instalação e Execução
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   ```
+
+2. Acesse a pasta do projeto:
+`cd nome-do-repositorio`
+
+3. Instale as dependências:
+`npm install`
+
+4. Inicie o servidor de desenvolvimento:
+npm run dev
+
+5. Acesse no navegador
